@@ -1,4 +1,41 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: all;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200%;
+  }
+
+  100% {
+    background-position: 200%;
+  }
+}
+
+.shine-text {
+  background: linear-gradient(90deg,
+      #000 0%,
+      #fff 50%,
+      #000 100%);
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 20s linear infinite;
+}
+
+html {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.mask-x {
+  mask-image: url('/mask-x.svg');
+  -webkit-mask-image: url('/mask-x.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
