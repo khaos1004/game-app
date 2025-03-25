@@ -1,65 +1,99 @@
-import React from "react";
-import Image from "next/image";
+'use client'
+import React, { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
 
-const Header: React.FC = () => {
-  return (
-    <>
-      <div className="flex h-[5rem] items-center w-full px-6">
-        {/* 왼쪽: 로고 */}
-        <div className="flex-1 flex justify-start items-center">
-          <span className="text-black shine-text text-2xl font-bold">
-            JCodeLab
-          </span>
+type Props = {
+    onSearch?: (value: string) => void
+}
+
+const Header: React.FC<Props> = ({ onSearch }) => {
+    const pathname = usePathname()
+    const showSearch = pathname === '/gamelist'
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    return (
+        <div className="flex flex-wrap h-[5rem] items-center w-full px-4 sm:px-6 z-20">
+            {/* 왼쪽: 로고 */}
+            <div className="flex-1 flex justify-start items-center">
+                <Link href="/">
+                    <span className="text-black shine-text text-2xl font-bold">JCodeLab</span>
+                </Link>
+            </div>
+
+            {/* 가운데: 검색창 (모바일 숨김, md 이상에서만 보임) */}
+            {showSearch && (
+                <div className="hidden md:flex flex-1 justify-center relative max-w-md w-full mt-2 md:mt-0">
+                    <input
+                        type="text"
+                        onChange={(e) => onSearch?.(e.target.value)}
+                        className="w-full border-gray-300 border rounded-3xl px-4 pr-10 py-2 text-white bg-black"
+                        placeholder="제품을 검색해 보세요!"
+                    />
+                    <button>
+                        <Image
+                            src="/common/search.svg"
+                            alt="Search"
+                            width={20}
+                            height={20}
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer hover:w-[1.2rem]"
+                        />
+                    </button>
+                </div>
+            )}
+
+            {/* 오른쪽: 메뉴 (모바일에선 가로스크롤 허용) */}
+            <div className="hidden flex-1 md:flex justify-end items-center gap-8 text-sm font-semibold overflow-x-auto whitespace-nowrap">
+                <Link href="/gamelist" className="hover:text-blue-500 text-white">
+                    제품목록
+                </Link>
+                <Link href="/contact" className="hover:text-blue-500 text-white">
+                    문의하기
+                </Link>
+                <Link href="/companyintro" className="hover:text-blue-500 text-white">
+                    회사소개
+                </Link>
+                <Link href="/login" className="hover:text-blue-500 text-white">
+                    로그인
+                </Link>
+                <Link href="/signup" className="hover:text-blue-500 text-white">
+                    회원가입
+                </Link>
+                <Link href="/cart" className="hover:text-blue-500 hover:animate-bounce">
+                    <Image
+                        src="/common/shopping_cart.svg"
+                        alt="user shoppingCart"
+                        width={25}
+                        height={20}
+                        className="cursor-pointer"
+                    />
+                </Link>
+            </div>
+            {/* 모바일 메뉴 토글 버튼 */}
+            <button
+                className="md:hidden text-white"
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="toggle menu"
+            >
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+
+            {/* 모바일 메뉴 드롭다운 */}
+            {menuOpen && (
+                <div className="w-full mt-4 flex flex-col gap-4 text-sm font-semibold text-white md:hidden bg-gray-900 p-4 rounded-xl shadow-lg z-30">
+                    <Link href="/gamelist" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">제품목록</Link>
+                    <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">문의하기</Link>
+                    <Link href="/companyintro" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">회사소개</Link>
+                    <Link href="/login" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">로그인</Link>
+                    <Link href="/signup" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">회원가입</Link>
+                    <Link href="/cart" onClick={() => setMenuOpen(false)} className="hover:text-blue-500 flex items-center gap-2">장바구니</Link>
+                </div>
+            )}
         </div>
+    )
+}
 
-        {/* 가운데: 검색창 */}
-        <div className="flex-1 flex justify-center relative max-w-md w-full">
-          <input
-            type="text"
-            className="w-full border-gray-300 border rounded-3xl px-4 pr-10 py-2"
-            placeholder="게임을 검색해 보세요!"
-          />
-          <button>
-            <Image
-              src="/common/search.svg"
-              alt="Search"
-              width={20}
-              height={20}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-            />
-          </button>
-        </div>
-
-        {/* 오른쪽: 메뉴 */}
-        <div className="flex-1 flex justify-end items-center space-x-8 text-sm font-semibold">
-          <div className="whitespace-nowrap hover:text-blue-500 cursor-pointer">
-            게임목록
-          </div>
-          <div className="whitespace-nowrap hover:text-blue-500 cursor-pointer">
-            문의하기
-          </div>
-          <div className="whitespace-nowrap hover:text-blue-500 cursor-pointer">
-            회사소개
-          </div>
-          <div className="whitespace-nowrap hover:text-blue-500 cursor-pointer">
-            로그인
-          </div>
-          <div className="whitespace-nowrap hover:text-blue-500 cursor-pointer">
-            회원가입
-          </div>
-          <div className="whitespace-nowrap hover:text-blue-500 hover:animate-bounce">
-            <Image
-              src="/common/shopping_cart.svg"
-              alt="user shoppingCart"
-              width={25}
-              height={20}
-              className="cursor-pointer "
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Header;
+export default Header

@@ -6,7 +6,7 @@ const MainVideo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [textIndex, setTextIndex] = useState(0)
-  const [showButton, setShowButton] = useState(false)
+  const [showText, setShowText] = useState(true)
 
   const videoSources = [
     '/videos/bg-main.mp4',
@@ -35,7 +35,9 @@ const MainVideo: React.FC = () => {
 
   useEffect(() => {
     if (textIndex === texts.length - 1) {
-      const timer = setTimeout(() => setShowButton(true), 1500)
+      const timer = setTimeout(() => {
+        setShowText(false)
+      }, 2500)
       return () => clearTimeout(timer)
     }
   }, [textIndex])
@@ -54,7 +56,7 @@ const MainVideo: React.FC = () => {
   }, [currentIndex])
 
   return (
-    <div className="absolute inset-0 w-full h-full -z-10">
+    <div className="absolute inset-0 w-full h-full z-0">
       <video
         ref={videoRef}
         key={currentIndex}
@@ -68,20 +70,20 @@ const MainVideo: React.FC = () => {
       </video>
 
       {/* 애니메이션 텍스트 */}
-      <div className="absolute top-1/3 w-full z-10">
-        <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
+        {showText && (
           <motion.div
-            key={textIndex}
+            key={`text-${textIndex}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 1.2 }}
-            className={`absolute ${texts[textIndex].position} text-white text-4xl font-bold drop-shadow-lg px-4`}
+            className={`absolute top-1/3 w-full z-10 ${texts[textIndex].position} text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg px-4`}
           >
             {texts[textIndex].message}
           </motion.div>
-        </AnimatePresence>
-      </div>     
+        )}
+      </AnimatePresence>
     </div>
   )
 }
