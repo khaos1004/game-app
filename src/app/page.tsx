@@ -17,7 +17,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-y-scroll">
+    <div className="flex flex-col min-h-screen relative overflow-hidden">
       <BgMainVideo />
 
       <div className="w-full z-20 relative">

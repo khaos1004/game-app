@@ -15,7 +15,7 @@ const Header: React.FC<Props> = ({ onSearch }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <div className="flex flex-wrap h-[5rem] items-center w-full px-4 sm:px-6 z-20">
+        <div className="flex flex-wrap h-[5rem] items-center w-full px-4 sm:px-6 z-20 overflow-y-hidden">
             {/* 왼쪽: 로고 */}
             <div className="flex-1 flex justify-start items-center">
                 <Link href="/">
@@ -61,13 +61,13 @@ const Header: React.FC<Props> = ({ onSearch }) => {
                 <Link href="/signup" className="hover:text-blue-500 text-white">
                     회원가입
                 </Link>
-                <Link href="/cart" className="hover:text-blue-500 hover:animate-bounce">
+                <Link href="/cart">
                     <Image
                         src="/common/shopping_cart.svg"
                         alt="user shoppingCart"
                         width={25}
                         height={20}
-                        className="cursor-pointer"
+                        className="cursor-pointer hover:animate-bounce"
                     />
                 </Link>
             </div>
