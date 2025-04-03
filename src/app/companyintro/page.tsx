@@ -37,7 +37,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold border-b border-gray-700 pb-2">Contact to JCodeLab</h2>
           <div className="flex items-center gap-3 text-gray-300">
             <Mail className="w-5 h-5" />
-            khaos1004@naver.com
+            brandonje@jcodelab.shop
           </div>
           {/* <div className="flex items-center gap-3 text-gray-300">
             <MapPin className="w-5 h-5" />
@@ -45,7 +45,7 @@ export default function AboutPage() {
           </div> */}
           <div className="flex items-center gap-3 text-gray-300">
             <Phone className="w-5 h-5" />
-            010-7794-6488 (AM 10 ~ PM 10)
+            010-7794-6488 (AM 06 ~ PM 23)
           </div>
         </section>
       </main>
