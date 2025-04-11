@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JCodeLab",
+  title: "JCodeLab - 고퀄리티 소스코드 마켓",
   description: "Source Code Exchange",
 };
 
@@ -27,10 +27,18 @@ export default function RootLayout({
       <head>
         <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" rel="stylesheet" />
         <link rel="icon" href="/common/code.svg" />
-
+        <meta name="description" content="게임, 자동화, 웹툴 등 다양한 소스코드를 한눈에 확인하세요." />
+        <meta name="keywords" content="소스코드 판매, 게임 소스, 자동화, 코드 마켓" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="JCodeLab" />
+        <meta property="og:title" content="JCodeLab - 소스코드 마켓" />
+        <meta property="og:description" content="게임, 자동화, 웹툴 등 다양한 고퀄 소스코드를 만날 수 있는 곳" />
+        <meta property="og:url" content="https://jcodelab.shop" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://jcodelab.shop/mask-x.svg" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable } antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
         {children}
       </body>
