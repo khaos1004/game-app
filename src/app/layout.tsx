@@ -27,6 +27,7 @@ export default function RootLayout({
       <head>
         <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" rel="stylesheet" />
         <link rel="icon" href="/common/code.svg" />
+        <meta name="naver-site-verification" content="25fcf51194e8ed056ce17a5c9db328456bbea668" />
         <meta name="description" content="게임, 자동화, 웹툴 등 다양한 소스코드를 한눈에 확인하세요." />
         <meta name="keywords" content="소스코드 판매, 게임 소스, 자동화, 코드 마켓" />
         <meta name="robots" content="index, follow" />
