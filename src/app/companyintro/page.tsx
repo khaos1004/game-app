@@ -1,4 +1,3 @@
-'use client'
 import Header from "@/component/public/Header"
 import Footer from "@/component/public/Footer"
 import { Mail, MapPin, Phone } from "lucide-react"
