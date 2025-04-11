@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JCodeLab - 고퀄리티 소스코드 마켓",
+  title: "제이코드랩(JCodeLab) - 고퀄리티 소스코드 마켓",
   description: "Source Code Exchange",
 };
 
