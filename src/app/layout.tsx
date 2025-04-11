@@ -35,7 +35,7 @@ export default function RootLayout({
         <meta property="og:description" content="게임, 자동화, 웹툴 등 다양한 고퀄 소스코드를 만날 수 있는 곳" />
         <meta property="og:url" content="https://jcodelab.shop" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://jcodelab.shop/mask-x.svg" />
+        <meta property="og:image" content="https://jcodelab.shop/common/jcodelabMain.jpg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}

@@ -2,32 +2,32 @@
 import Header from "@/component/public/Header"
 import Footer from "@/component/public/Footer"
 import { Mail, MapPin, Phone } from "lucide-react"
-// import { Metadata } from 'next'
+import { Metadata } from 'next'
 
-// // ✅ SEO 메타데이터 추가
-// export const metadata: Metadata = {
-//   title: 'About - JCodeLab',
-//   description: 'JCodeLab은 혁신적인 소스코드와 서비스를 제공하는 개발 스튜디오입니다.',
-//   keywords: ['JCodeLab', '소스코드 판매', '개발 서비스', '게임 개발', '웹 제작'],
-//   openGraph: {
-//     title: 'About - JCodeLab',
-//     description: 'JCodeLab은 혁신적인 소스코드와 서비스를 제공하는 개발 스튜디오입니다.',
-//     url: 'https://jcodelab.shop/about',
-//     siteName: 'JCodeLab',
-//     images: [
-//       {
-//         url: 'https://jcodelab.shop/og-thumbnail.png', // 썸네일 이미지
-//         width: 1200,
-//         height: 630,
-//       },
-//     ],
-//     type: 'website',
-//   },
-//   robots: {
-//     index: true,
-//     follow: true,
-//   }
-// }
+// ✅ SEO 메타데이터 추가
+export const metadata: Metadata = {
+  title: 'About - JCodeLab',
+  description: 'JCodeLab은 혁신적인 소스코드와 서비스를 제공하는 개발 스튜디오입니다.',
+  keywords: ['JCodeLab', '소스코드 판매', '개발 서비스', '게임 개발', '웹 제작'],
+  openGraph: {
+    title: 'About - JCodeLab',
+    description: 'JCodeLab은 혁신적인 소스코드와 서비스를 제공하는 개발 스튜디오입니다.',
+    url: 'https://jcodelab.shop/about',
+    siteName: 'JCodeLab',
+    images: [
+      {
+        url: 'https://jcodelab.shop/mask-x.svg', // 썸네일 이미지
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
+}
 
 export default function AboutPage() {
   return (
