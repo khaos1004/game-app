@@ -51,7 +51,6 @@ export default function RootLayout({
         <meta name="twitter:title" content="JCodeLab - 소스코드 마켓" />
         <meta name="twitter:description" content="게임, 자동화, 웹툴, AI 소스코드까지 다양한 소스를 판매하는 제이코드랩." />
         <meta name="twitter:image" content="https://jcodelab.shop/common/jcodelabMain.jpg" />
-
         <title>제이코드랩 - 게임/자동화 소스코드 마켓 | JCodeLab</title>
       </head>
 
