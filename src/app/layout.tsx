@@ -28,7 +28,7 @@ export default function RootLayout({
         <link href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css" rel="stylesheet" />
         <link rel="icon" href="/common/code.svg" />
         <meta name="naver-site-verification" content="25fcf51194e8ed056ce17a5c9db328456bbea668" />
-        <meta name="description" content="게임, 자동화, 웹툴 등 다양한 소스코드를 한눈에 확인하세요." />
+        <meta name="description" content="게임, 자동화, 웹/앱 서비스 등 다양한 소스코드를 한눈에 확인하세요." />
         <meta name="keywords" content="소스코드 판매, 게임 소스, 자동화, 코드 마켓" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="JCodeLab" />
@@ -36,7 +36,7 @@ export default function RootLayout({
         <meta property="og:description" content="게임, 자동화, 웹툴 등 다양한 고퀄 소스코드를 만날 수 있는 곳" />
         <meta property="og:url" content="https://jcodelab.shop" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://jcodelab.shop/common/jcodelabMain.jpg" />
+        <meta property="og:image" content="/common/jcodelabMain.jpg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
