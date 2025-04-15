@@ -15,7 +15,7 @@ const Header: React.FC<Props> = ({ onSearch }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <div className="flex flex-wrap h-[5rem] items-center w-full px-4 sm:px-6 z-999 overflow-y-hidden">
+        <div className="flex flex-wrap items-center w-full p-4 sm:px-6 z-999 overflow-y-hidden">
             {/* 왼쪽: 로고 */}
             <div className="flex-1 flex justify-start items-center">
                 <Link href="/">
@@ -81,8 +81,8 @@ const Header: React.FC<Props> = ({ onSearch }) => {
                 {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
             {/* 모바일 메뉴 드롭다운 */}
-            {/* {menuOpen && ( */}
-                <div className="w-full flex flex-col gap-4 text-sm font-semibold text-white md:hidden bg-gray-900 p-4 rounded-xl shadow-lg">
+            {menuOpen && (
+                <div className="w-full flex flex-col gap-4 text-sm font-semibold text-white md:hidden bg-gray-900 p-4 rounded-xl shadow-lg mt-4 sm:opacity-90">
                     <Link href="/gamelist" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">제품목록</Link>
                     <Link href="/contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">문의하기</Link>
                     <Link href="/companyintro" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">회사소개</Link>
@@ -90,7 +90,7 @@ const Header: React.FC<Props> = ({ onSearch }) => {
                     <Link href="/signup" onClick={() => setMenuOpen(false)} className="hover:text-blue-500">회원가입</Link>
                     <Link href="/cart" onClick={() => setMenuOpen(false)} className="hover:text-blue-500 flex items-center gap-2">장바구니</Link>
                 </div>
-            {/* )} */}
+            )}
         </div>
     )
 }
