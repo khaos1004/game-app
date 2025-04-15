@@ -1,10 +1,11 @@
 'use client'
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const MainVideo: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [nextIndex, setNextIndex] = useState(1)
+  const [fade, setFade] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [showText, setShowText] = useState(true)
 
@@ -25,9 +26,8 @@ const MainVideo: React.FC = () => {
     },
     {
       message: '당신의 상상을',
-      position:
-        'text-center left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-1/4 sm:text-right',
-    },      
+      position: 'text-center left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-1/4 sm:text-right',
+    },
     {
       message: '현실로 연결합니다',
       position: 'text-center left-1/2 -translate-x-1/2',
@@ -58,32 +58,39 @@ const MainVideo: React.FC = () => {
     }
   }, [textIndex])
 
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const handleEnded = () => {
-      const nextIndex = (currentIndex + 1) % videoSources.length
-      setCurrentIndex(nextIndex)
-    }
-
-    video.addEventListener('ended', handleEnded)
-    return () => video.removeEventListener('ended', handleEnded)
-  }, [currentIndex])
+  // 전환 처리
+  const handleVideoEnded = () => {
+    setFade(true)
+    setTimeout(() => {
+      const next = (currentIndex + 1) % videoSources.length
+      setCurrentIndex(next)
+      setNextIndex((next + 1) % videoSources.length)
+      setFade(false)
+    }, 1000) // 페이드 시간
+  }
 
   return (
     <div className="absolute inset-0 w-full h-full z-0">
+      {/* 현재 영상 */}
       <video
-        ref={videoRef}
-        key={currentIndex}
+        key={`video-${currentIndex}`}
+        src={videoSources[currentIndex]}
         autoPlay
         muted
         playsInline
-        className="w-full h-full object-cover object-center"
-      >
-        <source src={videoSources[currentIndex]} type="video/mp4" />
-        브라우저가 video 태그를 지원하지 않습니다.
-      </video>
+        onEnded={handleVideoEnded}
+        className={`w-full h-full object-cover object-center absolute transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
+      />
+
+      {/* 다음 영상은 미리 로드 */}
+      <video
+        key={`video-next-${nextIndex}`}
+        src={videoSources[nextIndex]}
+        autoPlay
+        muted
+        playsInline
+        className="w-full h-full object-cover object-center absolute opacity-0 pointer-events-none"
+      />
 
       {/* 애니메이션 텍스트 */}
       <AnimatePresence mode="wait">

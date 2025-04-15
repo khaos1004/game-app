@@ -53,6 +53,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold border-b border-gray-700 pb-2">JcodeLab Service</h2>
           <ul className="list-disc list-inside text-gray-300 space-y-2 ml-2">
             <li>웹 및 모바일 서비스 개발</li>
+            <li>자동화 프로그램 개발</li>
             <li>Unity 게임 개발</li>
             <li>캐쥬얼 게임 개발</li>
           </ul>
