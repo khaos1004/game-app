@@ -15,11 +15,27 @@ const MainVideo: React.FC = () => {
   ]
 
   const texts = [
-    { message: '세상을 바꿀 아이디어', position: 'left-1/4 text-left' },
-    { message: '코드로 실현하다', position: 'left-1/2 -translate-x-1/2 text-center' },
-    { message: '당신의 상상을', position: 'right-1/4 text-right' },
-    { message: '현실로 연결합니다', position: 'left-1/2 -translate-x-1/2 text-center' },
-    { message: 'JCodeLab이 이루겠습니다', position: 'left-1/2 -translate-x-1/2 text-center' },
+    {
+      message: '세상을 바꿀 아이디어',
+      position: 'text-center left-1/2 -translate-x-1/2 sm:left-1/4 sm:translate-x-0 sm:text-left',
+    },
+    {
+      message: '코드로 실현하다',
+      position: 'text-center left-1/2 -translate-x-1/2',
+    },
+    {
+      message: '당신의 상상을',
+      position:
+        'text-center left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-1/4 sm:text-right',
+    },      
+    {
+      message: '현실로 연결합니다',
+      position: 'text-center left-1/2 -translate-x-1/2',
+    },
+    {
+      message: 'JCodeLab이 이루겠습니다',
+      position: 'text-center left-1/2 -translate-x-1/2',
+    },
   ]
 
   useEffect(() => {
