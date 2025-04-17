@@ -58,7 +58,6 @@ const MainVideo: React.FC = () => {
     }
   }, [textIndex])
 
-  // 전환 처리
   const handleVideoEnded = () => {
     setFade(true)
     setTimeout(() => {
@@ -66,12 +65,11 @@ const MainVideo: React.FC = () => {
       setCurrentIndex(next)
       setNextIndex((next + 1) % videoSources.length)
       setFade(false)
-    }, 1000) // 페이드 시간
+    }, 1000)
   }
 
   return (
     <div className="absolute inset-0 w-full h-full z-0">
-      {/* 현재 영상 */}
       <video
         key={`video-${currentIndex}`}
         src={videoSources[currentIndex]}
@@ -81,8 +79,6 @@ const MainVideo: React.FC = () => {
         onEnded={handleVideoEnded}
         className={`w-full h-full object-cover object-center absolute transition-opacity duration-1000 ${fade ? 'opacity-0' : 'opacity-100'}`}
       />
-
-      {/* 다음 영상은 미리 로드 */}
       <video
         key={`video-next-${nextIndex}`}
         src={videoSources[nextIndex]}
@@ -92,7 +88,7 @@ const MainVideo: React.FC = () => {
         className="w-full h-full object-cover object-center absolute opacity-0 pointer-events-none"
       />
 
-      {/* 애니메이션 텍스트 */}
+      {/* 텍스트 중앙 정렬 수정됨 */}
       <AnimatePresence mode="wait">
         {showText && (
           <motion.div
@@ -101,7 +97,7 @@ const MainVideo: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 1.2 }}
-            className={`absolute top-1/3 w-full z-10 ${texts[textIndex].position} text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg px-4`}
+            className={`absolute top-1/2 -translate-y-1/2 w-full z-10 ${texts[textIndex].position} text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg px-4`}
           >
             {texts[textIndex].message}
           </motion.div>
