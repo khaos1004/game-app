@@ -88,7 +88,7 @@ const MainVideo: React.FC = () => {
         className="w-full h-full object-cover object-center absolute opacity-0 pointer-events-none"
       />
 
-      {/* 텍스트 중앙 정렬 수정됨 */}
+      {/* ✅ 텍스트를 세로 정중앙에 위치시키도록 수정 */}
       <AnimatePresence mode="wait">
         {showText && (
           <motion.div
@@ -97,7 +97,7 @@ const MainVideo: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 1.2 }}
-            className={`absolute top-1/2 -translate-y-1/2 w-full z-10 ${texts[textIndex].position} text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg px-4`}
+            className={`absolute top-1/3 -translate-y-1/4 w-full z-10 ${texts[textIndex].position} text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg px-4`}
           >
             {texts[textIndex].message}
           </motion.div>
