@@ -15,7 +15,7 @@ const Header: React.FC<Props> = ({ onSearch }) => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
-        <div className="flex flex-wrap items-center w-full p-4 sm:px-6 z-999 overflow-y-hidden fixed">
+        <div className="flex flex-wrap items-center w-full p-4 sm:px-6 z-999 overflow-y-hidden">
             {/* 왼쪽: 로고 */}
             <div className="flex-1 flex justify-start items-center">
                 <Link href="/">

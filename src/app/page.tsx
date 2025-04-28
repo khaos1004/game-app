@@ -34,7 +34,7 @@ export default function Home() {
           >
             <Link href="/gamelist">
               <button className="px-6 py-3 text-base sm:text-lg md:text-xl rounded-full font-semibold text-white bg-gradient-to-r from-gray-400 to-gray-300 shadow-lg hover:brightness-200 hover:text-black transition">
-                JCodeLab 입장
+                제이코드랩(JCodeLab) 입장
               </button>
             </Link>
           </motion.div>

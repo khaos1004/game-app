@@ -33,7 +33,7 @@ const MainVideo: React.FC = () => {
       position: 'text-center left-1/2 -translate-x-1/2',
     },
     {
-      message: 'JCodeLab이 이루겠습니다',
+      message: '제이코드랩(JCodeLab)이 이루겠습니다',
       position: 'text-center left-1/2 -translate-x-1/2',
     },
   ]
