@@ -1,24 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders_Display, JetBrains_Mono } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Ambient from "@/components/Ambient";
 import { site } from "@/lib/data";
 import "./globals.css";
-
-const display = Big_Shoulders_Display({
-  subsets: ["latin"],
-  weight: ["500", "700", "800", "900"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -58,8 +43,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${display.variable} ${mono.variable}`}>
+    <html lang="ko">
       <head>
+        {/* 글꼴: 제목(Big Shoulders), 숫자·라벨(JetBrains Mono), 본문(Pretendard) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@500;700;800;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"

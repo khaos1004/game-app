@@ -11,6 +11,8 @@
   --line: rgba(235, 229, 216, 0.11);
   --line-strong: rgba(235, 229, 216, 0.22);
 
+  --font-display: "Big Shoulders", "Big Shoulders Display";
+  --font-mono: "JetBrains Mono";
   --font-display-stack: var(--font-display), "Arial Narrow", sans-serif;
   --font-body-stack: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono-stack: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
