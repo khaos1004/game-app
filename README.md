@@ -59,3 +59,13 @@ ffmpeg -i 원본.mov -an -vf "scale=1920:-2,fps=30" -c:v libx264 -crf 24 -preset
 
 - 메타데이터·OG 이미지: `app/layout.tsx` (네이버 사이트 인증 메타 태그 유지)
 - `app/sitemap.ts`, `app/robots.ts`가 `/sitemap.xml`, `/robots.txt`를 만들어 줍니다 (next-sitemap 불필요).
+
+## 배포 (Cloudflare)
+
+정적 사이트로 내보내(`output: "export"`) Cloudflare Workers의 정적 자산으로 배포합니다. 설정은 `wrangler.jsonc`에 있습니다.
+
+- 빌드 명령: `npm run build` (결과는 `out/` 폴더)
+- 배포 명령: `npx wrangler deploy`
+- `wrangler.jsonc`의 `name`은 Cloudflare 프로젝트 이름(`game-app`)과 같아야 합니다.
+
+정적 사이트라 서버 API가 없습니다. 문의 폼(`POST /api/contact`)을 쓰려면 문의 서버 주소를 따로 연결해야 합니다.
