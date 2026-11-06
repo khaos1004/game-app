@@ -1,10 +1,23 @@
 {
-  // Cloudflare 배포 설정: next build 가 만든 out/ 폴더를 정적 사이트로 올립니다.
+  // Cloudflare 배포 설정
+  // - next build 가 만든 out/ 폴더를 정적 사이트로 올립니다.
+  // - /api/contact 요청만 worker/index.ts 가 받아 문의 메일을 보냅니다.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "game-app",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./out",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  // 문의 메일: 받는 주소는 Cloudflare Email Routing에서 '대상 주소'로 인증해야 합니다.
+  "send_email": [
+    { "name": "MAILER", "destination_address": "khaos1004@naver.com" }
+  ],
+  "vars": {
+    "CONTACT_TO": "khaos1004@naver.com",
+    "CONTACT_FROM": "contact@jcodelab.cloud"
   }
 }

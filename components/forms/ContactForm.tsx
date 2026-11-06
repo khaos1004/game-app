@@ -3,8 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { AreaField, Field, isEmail } from "@/components/Field";
 
-type Form = { name: string; email: string; title: string; content: string; password: string };
-const empty: Form = { name: "", email: "", title: "", content: "", password: "" };
+type Form = { name: string; email: string; title: string; content: string; website: string };
+const empty: Form = { name: "", email: "", title: "", content: "", website: "" };
 
 function validate(f: Form) {
   const e: Partial<Record<keyof Form, string>> = {};
@@ -12,7 +12,6 @@ function validate(f: Form) {
   if (!isEmail(f.email)) e.email = "답변 받을 이메일 주소를 확인해 주세요.";
   if (!f.title.trim()) e.title = "제목을 입력해 주세요.";
   if (f.content.trim().length < 10) e.content = "문의 내용을 10자 이상 적어 주세요.";
-  if (!/^\d{6,}$/.test(f.password)) e.password = "비밀번호는 숫자 6자리 이상이어야 합니다.";
   return e;
 }
 
@@ -52,8 +51,8 @@ export default function ContactForm() {
     return (
       <div className="panel panel--done" role="status">
         <p className="eyebrow">Received</p>
-        <h2 className="h2">문의가 접수되었습니다.</h2>
-        <p className="muted">남겨 주신 이메일로 답변 드리겠습니다. 문의 내역은 입력하신 비밀번호로 확인할 수 있습니다.</p>
+        <h2 className="h2">문의를 보냈습니다.</h2>
+        <p className="muted">메일로 잘 전달되었습니다. 남겨 주신 이메일로 답변 드리겠습니다.</p>
         <button type="button" className="btn btn--ghost" onClick={() => setStatus("idle")}>
           새 문의 작성
         </button>
@@ -87,21 +86,20 @@ export default function ContactForm() {
         placeholder="협업 제안, 버그 제보, 피드백 등 편하게 적어 주세요."
         error={errors.content}
       />
-      <Field
-        id="password"
-        label="비밀번호"
-        hint="문의 내역 확인용, 숫자 6자리 이상"
-        icon="lock"
-        type="password"
-        inputMode="numeric"
-        value={f.password}
-        onChange={set("password")}
-        autoComplete="new-password"
-        error={errors.password}
+      {/* 스팸 방지용 숨은 칸 (사람에게는 보이지 않음) */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={f.website}
+        onChange={set("website")}
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
       />
       {status === "fail" && <p className="notice notice--err">{failMsg}</p>}
       <button type="submit" className="btn btn--primary btn--block" disabled={status === "sending"}>
-        {status === "sending" ? "보내는 중..." : "문의 등록"}
+        {status === "sending" ? "보내는 중..." : "문의 보내기"}
       </button>
     </form>
   );

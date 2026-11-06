@@ -68,4 +68,12 @@ ffmpeg -i 원본.mov -an -vf "scale=1920:-2,fps=30" -c:v libx264 -crf 24 -preset
 - 배포 명령: `npx wrangler deploy`
 - `wrangler.jsonc`의 `name`은 Cloudflare 프로젝트 이름(`game-app`)과 같아야 합니다.
 
-정적 사이트라 서버 API가 없습니다. 문의 폼(`POST /api/contact`)을 쓰려면 문의 서버 주소를 따로 연결해야 합니다.
+### 문의 메일
+
+문의 폼은 `POST /api/contact`로 보내고, `worker/index.ts`가 Cloudflare Email Routing으로 메일을 보냅니다.
+
+1. Cloudflare 대시보드 → jcodelab.cloud → **이메일 → 이메일 라우팅**을 켭니다.
+2. **대상 주소**에 문의를 받을 메일(`khaos1004@naver.com`)을 추가하고, 받은 인증 메일에서 인증합니다.
+3. 받는 주소를 바꾸려면 `wrangler.jsonc`의 `destination_address`와 `CONTACT_TO`를 함께 바꾸세요.
+
+받은 메일에 답장하면 문의한 사람에게 바로 갑니다(Reply-To).
