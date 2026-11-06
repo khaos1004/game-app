@@ -6,7 +6,7 @@ export const site = {
   nameKo: "제이코드랩",
   url: "https://jcodelab.cloud",
   tagline: "상상에 가치를 더하다",
-  email: "contact@jcodelab.cloud",
+  email: "khaos1004@naver.com",
   phone: "010-7794-6488",
   phoneHours: "오전 6시 ~ 오후 11시",
 };
