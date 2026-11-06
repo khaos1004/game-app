@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JCodeLab 웹사이트
 
-## Getting Started
+Unity로 모바일 게임을 만들어 Google Play에 출시하는 1인 게임 스튜디오 JCodeLab(제이코드랩)의 사이트입니다.
+기존 `game-app` 프로젝트의 페이지 구성과 영상·이미지를 그대로 가져와 최신 Next.js(App Router)로 새로 만들었습니다.
 
-First, run the development server:
+## 실행
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`package.json`의 next / react 버전은 `latest`라서 설치하는 시점의 최신 버전이 들어옵니다.
+설치 후 `package-lock.json`을 커밋하면 버전이 고정됩니다.
+UI 라이브러리(Tailwind, daisyUI, framer-motion, lucide, react-icons)는 쓰지 않고 CSS와 직접 만든 컴포넌트만 씁니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 페이지
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| 경로 | 내용 |
+|---|---|
+| `/` | 대표 게임 히어로(게임별 슬라이드, Google Play·App Store 버튼, 하단 게임 선택 바), What we make, 전체 게임, 소식, 스튜디오 소개 |
+| `/gamelist` | 게임: 대표 게임 캐러셀, 검색, 상세 모달(Google Play 바로가기). 상태가 섞이면 필터가 자동으로 나타납니다 |
+| `/companyintro` | 스튜디오: 게임 카드 덱, 가치, 엔딩 크레딧, Unity 기술, 로드맵(단계만 표시), 연락처 |
+| `/contact` | 문의 폼 → `POST /api/contact` |
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+```ts
+// next.config.ts 예시
+async rewrites() {
+  return [
+    { source: "/api/:path*", destination: "https://api.jcodelab.cloud/api/:path*" },
+  ];
+},
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 수정할 곳
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 문구·게임·연락처: `lib/data.ts` (게임 이미지는 `public/games/`, 출시하면 `status`와 `stores` 주소를 바꿔 주세요. `[가제]` 표시는 임시 제목입니다)
+- 게임별 플랫폼: `lib/data.ts`의 `platforms: ["android"]` (iOS를 내면 `"ios"`와 `stores.appStore`를 추가)
+- Google Play · App Store 링크: 게임의 `stores`에 주소를 넣으면 상세 화면에 버튼이 생깁니다
+- 메인 슬라이드 배경을 게임 영상으로: 게임의 `trailer`에 `/videos/트레일러.mp4` 같은 경로를 넣으세요
+- 소식: `lib/data.ts`의 `news` (최신 글이 위)
+- SNS 링크: `lib/data.ts`의 `social` (주소를 넣은 것만 표시)
+- 푸터 사업자 정보: `lib/data.ts`의 `company` (대표, 사업자등록번호, 통신판매업 신고 번호 등. 값을 넣은 줄만 표시)
+- 회사소개 내용·로드맵: `lib/studio.ts`
+- 색과 글꼴: `app/globals.css` 맨 위 `:root`
 
-## Deploy on Vercel
+## 게임 영상
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+사이트에는 이제 사람이 나오는 배경 영상이 없습니다. 실제 게임 플레이 영상이 생기면 `public/videos`에 넣고
+`lib/data.ts`의 해당 게임 `trailer`에 경로를 적으면 메인 첫 화면 그 게임 슬라이드의 배경으로 재생됩니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+ffmpeg -i 원본.mov -an -vf "scale=1920:-2,fps=30" -c:v libx264 -crf 24 -preset slow -movflags +faststart public/videos/트레일러.mp4
+```
+
+## SEO
+
+- 메타데이터·OG 이미지: `app/layout.tsx` (네이버 사이트 인증 메타 태그 유지)
+- `app/sitemap.ts`, `app/robots.ts`가 `/sitemap.xml`, `/robots.txt`를 만들어 줍니다 (next-sitemap 불필요).
