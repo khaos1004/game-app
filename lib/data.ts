@@ -140,38 +140,38 @@ export const games: Game[] = [
     stores: { googlePlay: play("com.jcodelab.undeadhorde") },
   },
   {
-    id: "panel-story",
-    title: "잔혹동화", // [가제]
+    id: "star-night",
+    title: "별을 삼킨 밤",
     genre: "그림 패널 퍼즐",
     platforms: ["android"],
     engine: "Unity",
     summary: "그림 조각을 맞추면, 동화가 다시 흘러갑니다",
     description:
       "한 장씩 그려진 그림 패널을 옮기고 겹쳐 길을 이어 가는 스토리 퍼즐 게임입니다. 화마다 새로운 잔혹동화와 함께 다른 동물 친구가 따라다니며, 갈수록 새로운 형태의 퍼즐이 등장합니다.",
-    image: "/games/panel-story.webp",
+    image: "/games/star-night.webp",
     status: "free",
     price: 0,
     features: ["그림 패널 퍼즐", "화별 스토리", "동물 동료", "아련한 동화 일러스트", "무료 플레이"],
-    stores: {}, // TODO: Google Play 주소 (Unity에 Android 패키지 이름이 아직 없음)
+    stores: { googlePlay: play("com.jcodelab.starnight") },
   },
   {
     id: "rift-spirit",
     title: "Rift Spirit",
-    genre: "2D 횡스크롤 액션",
+    genre: "픽셀 액션",
     platforms: ["android"],
     engine: "Unity",
     summary: "불타는 대지를 가르는 한 자루의 검",
     description:
-      "화산과 폐허, 빙하를 넘나들며 거대한 보스와 맞서는 픽셀 아트 횡스크롤 액션 게임입니다. 화려한 픽셀 이펙트의 스킬과 콤보로 싸웁니다.",
+      "화산과 폐허, 빙하를 넘나들며 거대한 보스와 맞서는 픽셀 아트 액션 게임입니다. 정령의 힘을 빌린 스킬과 콤보로 싸웁니다.",
     image: "/games/rift-spirit.webp",
     status: "free",
     price: 0,
     features: ["픽셀 아트 액션", "보스 전투", "스킬 · 콤보", "다양한 지역", "무료 플레이"],
-    stores: { googlePlay: play("com.riftspirit.game") },
+    stores: { googlePlay: play("com.jcodelab.riftspirit") },
   },
   {
     id: "horde-defense",
-    title: "좀비 디펜스", // [가제]
+    title: "Horde Defense",
     genre: "물량 디펜스",
     platforms: ["android"],
     engine: "Unity",
@@ -182,7 +182,7 @@ export const games: Game[] = [
     status: "free",
     price: 0,
     features: ["대규모 좀비 물량", "기지 · 타워 건설", "다양한 몬스터", "무료 플레이"],
-    stores: {}, // TODO: Google Play 주소 (Unity에 Android 패키지 이름이 아직 없음)
+    stores: { googlePlay: play("com.jcodelab.hordedefense") },
   },
   {
     id: "speaking-grammar",
@@ -217,10 +217,10 @@ export type NewsCat = "공지" | "업데이트" | "개발일지" | "이벤트";
 
 /** 메인 "소식" 목록. 최신 글이 위로 오게 적어 주세요. */
 export const news: { cat: NewsCat; title: string; date: string; game?: string }[] = [
-  { cat: "공지", title: "JCodeLab의 모든 게임, Google Play에서 만나 보세요", date: "2026.11.06" },
-  { cat: "공지", title: "체인 팝, Google Play 출시", date: "2026.11.05", game: "체인 팝" },
+  { cat: "공지", title: "JCodeLab 게임 7종, Google Play 출시 완료", date: "2026.11.17" },
+  { cat: "공지", title: "잔혹동화 패널 퍼즐 '별을 삼킨 밤' 출시", date: "2026.11.17", game: "별을 삼킨 밤" },
+  { cat: "공지", title: "Rift Spirit · Horde Defense, Google Play 출시", date: "2026.11.17", game: "Rift Spirit" },
   { cat: "업데이트", title: "언데드 호드, 픽셀화된 3D 그래픽으로 새 단장", date: "2026.11.04", game: "언데드 호드" },
-  { cat: "공지", title: "캔디 점프, Google Play 출시", date: "2026.10.27", game: "캔디 점프" },
   { cat: "개발일지", title: "JCodeLab의 모든 게임은 이제 Unity로 만듭니다", date: "2026.10.25" },
   { cat: "공지", title: "JCodeLab 공식 홈페이지를 새롭게 열었습니다", date: "2026.10.24" },
 ];
