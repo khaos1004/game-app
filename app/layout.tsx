@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   keywords: ["제이코드랩", "JCodeLab", "모바일 게임", "인디 게임", "Unity", "유니티", "Android", "Google Play", "무료 게임"],
   authors: [{ name: "JCodeLab" }],
   robots: { index: true, follow: true },
-  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico" }] },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "any" }],
+    apple: "/apple-touch-icon.png",
+  },
   verification: { other: { "naver-site-verification": "25fcf51194e8ed056ce17a5c9db328456bbea668" } },
   openGraph: {
     title: "JCodeLab - 모바일 게임 스튜디오",
